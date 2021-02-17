@@ -50,6 +50,37 @@ public class TestData {
         return sensorList;
     }
 
+    public List<Measurement> getTestSensorListIntegrationTests(){
+        List<Measurement> sensorList = new ArrayList<>();
+        sensorList.add(Measurement.builder()
+                .recordUID(UUID.randomUUID())
+                .sensorid("00_INTEGRATIONTEST")
+                .title("Température de l'eau à l'arrivée")
+                .description("Returns the temperature of the hot water entering the house from the central heating system")
+                .familyid(40)
+                .sensorType(SensorType.ONEWIRE)
+                .low_threshold(45.0)
+                .high_threshold(75.0)
+                .alertgroup("temperature_threshold_alerts_private")
+                .alertdestination("BORRY")
+                .build());
+
+        sensorList.add(Measurement.builder()
+                .recordUID(UUID.randomUUID())
+                .sensorid("01_INTEGRATIONTEST")
+                .title("Température de l'eau de chaudière")
+                .description("Returns the temperature of the hot water in the boiler")
+                .familyid(40)
+                .sensorType(SensorType.ONEWIRE)
+                .low_threshold(35.0)
+                .high_threshold(60.0)
+                .alertgroup("temperature_threshold_alerts_private")
+                .alertdestination("PRIVATE")
+                .build());
+
+        return sensorList;
+    }
+
     public List<Measurement> getTestMeasurements(List<Measurement> sensorList) {
         for(Measurement srec : sensorList) {
             srec.setMeasurementUnit(MeasurementUnit.C);
